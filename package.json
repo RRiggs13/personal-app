@@ -5,9 +5,9 @@
   "main": "./app.js",
   "dependencies": {
     "async": ">= 0.1.12",
-    "shared-ui": "git+https://github.com/fs-webdev/shared-ui.git",
-    "woodruff": "git+https://github.com/fs-webdev/woodruff.git",
+    "theme-engage": "git+https://github.com/fs-webdev/theme-engage.git",
     "frontier-build-tools": "git+https://github.com/fs-webdev/frontier-build-tools.git",
+    "woodruff": "git+https://github.com/fs-webdev/woodruff.git",
     "startup": "~0.1.12"
   },
   "devDependencies": {

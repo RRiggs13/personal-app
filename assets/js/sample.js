@@ -1,1 +1,1 @@
-alert('sample app loaded');
+// alert('sample app loaded');

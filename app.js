@@ -2,9 +2,9 @@
  * Module dependencies
  */
 var woodruff = require("woodruff")
-  , shared = require("shared-ui");
+    , themeEngage = require("theme-engage");
 
 /**
  * Expose the app
  */
-var app = module.exports = woodruff(__dirname, shared);
+var app = module.exports = woodruff(__dirname, themeEngage);

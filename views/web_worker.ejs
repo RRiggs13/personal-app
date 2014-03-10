@@ -1,0 +1,34 @@
+<% page = { 'title' : 'PAGE_TITLE', 'key': 'WEBWORKER_PAGE_NAME'} %>
+<%
+page = { title: i18n('pageTitle'), key: "HR Linking", loadOmnitureInHead: true }
+
+assets = {
+  css: [
+    "worker.css"
+  ],
+  js: [
+    "angular-1.2.10.js",
+    "angular/JS_JourneymanApp.js",
+    "angular/JourneymanJS/WebWorkerController.js",
+    "angular/services/WebWorkerService.js"
+  ]
+}
+%>
+
+<div id="main" class="experiments" data-ng-app="js.journeyman">
+  <div class="no-layout">
+    <section class="basic" data-ng-controller="WebWorkerController">
+      <p>
+        Web Worker sample
+      </p>
+      <button data-ng-click="startWorker()">Start Worker</button>
+      <button data-ng-click="startWorker()">Stop Worker</button>
+      <button data-ng-click="withoutWorker()">Without Worker</button>
+      <input data-ng-model="activeTyping">
+      <p>{{activeTyping}}</p>
+      <ul>
+        <li data-ng-repeat="item in workerResults track by $index">{{item}}</li>
+      </ul>
+    </section>
+  </div>
+</div>
