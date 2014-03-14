@@ -22,9 +22,10 @@ assets = {
         Web Worker sample
       </p>
       <button data-ng-click="startWorker()">Start Worker</button>
-      <button data-ng-click="startWorker()">Stop Worker</button>
+      <button data-ng-click="stopWorker()">Stop Worker</button>
       <button data-ng-click="withoutWorker()">Without Worker</button>
-      <input data-ng-model="activeTyping">
+      <p></p>
+      <input data-ng-model="activeTyping">&nbsp;&nbsp;&nbsp;&nbsp;<span>{{progress}}</span>
       <p>{{activeTyping}}</p>
       <ul>
         <li data-ng-repeat="item in workerResults track by $index">{{item}}</li>

@@ -13,9 +13,11 @@
 angular.module('js.journeyman').
 controller('WebWorkerController', ['$scope', '$q', 'VariableWebWorkerService', function ($scope, $q, $webWorker) {
   $scope.workerResults = [];
+      $scope.progress = 'none';
 
   $scope.startWorker = function () {
-    $q.when($webWorker.doWork('Worker Working')).then(
+    $scope.workerResults = [];
+    $q.when($webWorker.doWork('Worker Working', makingProgress)).then(
       function (data) {
         if (data) {
           if (data.length) {
@@ -29,8 +31,44 @@ controller('WebWorkerController', ['$scope', '$q', 'VariableWebWorkerService', f
       }
     );
   }
+  $scope.stopWorker = function () {
+    $webWorker.stopWork();
+  }
+
+  function makingProgress(data) {
+    $scope.safeApply(function () {
+      $scope.progress = data;
+    });
+//    console.log('Progress: ', data);
+  }
 
   $scope.withoutWorker = function () {
-   // Run "doWork" code
+    $scope.workerResults = [];
+    var results = [];
+    for (var i=0; i<5; i++) {
+      console.log('LOCK Iteration ' + (i+1));
+      results.push('Iteration ' + (i+1));
+      hardPause(1000);
+    }
+    $scope.workerResults = results;
+
+    function hardPause(millis)
+    {
+      var date = new Date();
+      var curDate = null;
+      do { curDate = new Date(); }
+      while(curDate-date < millis);
+    }
   }
+
+  $scope.safeApply = function(fn) {
+    var phase = this.$root.$$phase;
+    if(phase == '$apply' || phase == '$digest') {
+      if(fn && (typeof(fn) === 'function')) {
+        fn();
+      }
+    } else {
+      this.$apply(fn);
+    }
+  };
 }]);
