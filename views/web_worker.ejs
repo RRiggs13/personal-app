@@ -10,6 +10,7 @@ assets = {
     "angular-1.2.10.js",
     "angular/JS_JourneymanApp.js",
     "angular/JourneymanJS/WebWorkerController.js",
+    "angular/JourneymanJS/WebSocketController.js",
     "angular/services/WebWorkerService.js"
   ]
 }
@@ -29,6 +30,16 @@ assets = {
       <p>{{activeTyping}}</p>
       <ul>
         <li data-ng-repeat="item in workerResults track by $index">{{item}}</li>
+      </ul>
+    </section>
+    <section class="basic" data-ng-controller="WebSocketController">
+
+      <button data-ng-click="connect()">Connect</button>
+      <button data-ng-click="disconnect()">Disconnect</button>
+
+      <input data-ng-model="userMessage"><button data-ng-disabled="!connected" data-ng-click="sendMessage()">Send</button>
+      <ul>
+        <li data-ng-repeat="message in messages track by $index">{{message}}</li>
       </ul>
     </section>
   </div>

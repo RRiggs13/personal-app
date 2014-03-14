@@ -39,7 +39,7 @@ angular.module('js.journeyman').factory("VariableWebWorkerService",['$q',functio
     worker = new Worker('js/doWork.js');
     worker.addEventListener('message', function(e) {
       if (e.data.hasOwnProperty('progress') && progressCallback) {
-        progressCallback('progress: ' + e.data.progress);
+        progressCallback(e.data.progress);
       } else {
         console.log('Worker done: ', e.data);
         defer.resolve(e.data);
